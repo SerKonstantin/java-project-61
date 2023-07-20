@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'application'
 
     // https://github.com/patrikerdes/gradle-use-latest-versions-plugin
     id 'se.patrikerdes.use-latest-versions' version '0.2.18'
@@ -20,4 +21,12 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+application {
+    mainClassName = 'hexlet.code.App'
+}
+
+compileJava {
+    options.release = 20
 }
