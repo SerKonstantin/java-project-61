@@ -1,8 +1,9 @@
 plugins {
     id 'java'
     id 'application'
+    id 'checkstyle'
 
-    // https://github.com/patrikerdes/gradle-use-latest-versions-plugin
+    // [Gradle use latest versions plugin](https://github.com/patrikerdes/gradle-use-latest-versions-plugin)
     id 'se.patrikerdes.use-latest-versions' version '0.2.18'
     id 'com.github.ben-manes.versions' version '0.47.0'
 }
