@@ -10,6 +10,7 @@ public class App {
         HashMap<String, String> gameModes = new HashMap<>();
         gameModes.put("0", "Exit");
         gameModes.put("1", "Greet");
+        gameModes.put("2", "Even");
 
         System.out.println("Please enter the game number and press Enter.");
         for (String key : gameModes.keySet()) {
@@ -25,7 +26,7 @@ public class App {
             System.out.println("Your choice: " + gameModeChoice);
         }
 
-        // For appending new game mode one needs to append this switch and HashMap "gameModes"
+        // For appending new game mode one needs to append this switch and HashMap "gameModes" above
         switch (gameModes.get(gameModeChoice)) {
             case "Exit":
                 System.out.println("Exiting game now. Hope you had fun)");
@@ -33,7 +34,11 @@ public class App {
 
             case "Greet":
                 String userName = Cli.getName();
-                break;
+                return;
+
+            case "Even":
+                GameEven.startGame();
+                return;
 
             // Default case only needed if somebody add new game mode to the HashMap and doesn't add it to the switch
             default:
