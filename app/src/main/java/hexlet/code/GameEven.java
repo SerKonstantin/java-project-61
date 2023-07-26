@@ -7,12 +7,13 @@ public class GameEven {
         final int roundsCount = 3; // Wanted to name ROUNDS_COUNT, but it doesn't satisfy linter
         // checkstyle.xml taken from here:
         // https://github.com/hexlet-boilerplates/java-package/blob/main/app/config/checkstyle/checkstyle.xml
+        final int maxRandomNumber = 50; // Same problem with linter here
 
         String userName = Cli.getName();
         System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
 
         for (int i = 0; i < roundsCount; i++) {
-            int number = (int) (Math.random() * 50 + 1);
+            int number = (int) (Math.random() * maxRandomNumber + 1);
             System.out.println("Question: " + number);
 
             String correctAnswer = number % 2 == 0 ? "yes" : "no";
