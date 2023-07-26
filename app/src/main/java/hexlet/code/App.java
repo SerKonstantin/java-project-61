@@ -32,7 +32,6 @@ public class App {
                 return;
 
             case "Greet":
-                System.out.println("Welcome to the Brain Games!");
                 String userName = Cli.getName();
                 break;
 
