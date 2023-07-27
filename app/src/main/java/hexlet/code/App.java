@@ -31,24 +31,23 @@ public class App {
         switch (gameModes.get(gameModeChoice)) {
             case "Exit":
                 System.out.println("Exiting game now. Hope you had fun)");
-                return;
+                break;
 
             case "Greet":
-                String userName = Cli.getName();
-                return;
+                String userName = Engine.getName();
+                break;
 
             case "Even":
-                GameEven.startGame();
-                return;
+                hexlet.code.games.Even.startGame();
+                break;
 
             case "Calc":
-                GameCalc.startGame();
-                return;
+                hexlet.code.games.Calc.startGame();
+                break;
 
             // Default case only needed if somebody add new game mode to the HashMap and doesn't add it to the switch
             default:
                 System.out.println("Error: Sorry, game isn't implemented yet");
-                return;
         }
     }
 }
