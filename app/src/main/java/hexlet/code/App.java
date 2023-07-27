@@ -11,6 +11,7 @@ public class App {
         gameModes.put("0", "Exit");
         gameModes.put("1", "Greet");
         gameModes.put("2", "Even");
+        gameModes.put("3", "Calc");
 
         System.out.println("Please enter the game number and press Enter.");
         for (String key : gameModes.keySet()) {
@@ -38,6 +39,10 @@ public class App {
 
             case "Even":
                 GameEven.startGame();
+                return;
+
+            case "Calc":
+                GameCalc.startGame();
                 return;
 
             // Default case only needed if somebody add new game mode to the HashMap and doesn't add it to the switch
