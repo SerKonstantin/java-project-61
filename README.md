@@ -4,5 +4,14 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/SerKonstantin/java-project-61/workflows/hexlet-check/badge.svg)](https://github.com/SerKonstantin/java-project-61/actions)
 
-### Example of gameplay:
-[Click me to watch on asciinema.org]( https://asciinema.org/a/bb1UTKTzWvLUyO32MTJdtk14o)
+## Games list:
+### 1. Even
+> Guess if number is even or odd
+> 
+> [Watch gameplay example](https://asciinema.org/a/bb1UTKTzWvLUyO32MTJdtk14o)
+
+### 2. Calc
+> Calculate sum, difference or product of two numbers
+> 
+> [Watch gameplay example](https://asciinema.org/a/tuegI0gkdclpfLChjRy9M1XBg)
+
