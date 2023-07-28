@@ -13,6 +13,7 @@ public class App {
         gameModes.put("2", "Even");
         gameModes.put("3", "Calc");
         gameModes.put("4", "GCD");
+        gameModes.put("5", "Progression");
 
         System.out.println("Please enter the game number and press Enter.");
         for (String key : gameModes.keySet()) {
@@ -48,6 +49,10 @@ public class App {
 
             case "GCD":
                 hexlet.code.games.GCD.startGame();
+                break;
+
+            case "Progression":
+                hexlet.code.games.Progression.startGame();
                 break;
 
             // Default case only needed if somebody add new game mode to the HashMap and doesn't add it to the switch
