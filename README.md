@@ -19,3 +19,8 @@
 > Find the greatest common divisor of two given numbers
 > 
 > [Watch gameplay example](https://asciinema.org/a/28G9O8AH9KPGuF7BnPyzcrwTg)
+
+### 4. Progression
+> Find out what number is missing in a row
+> 
+> [Watch gameplay example](https://asciinema.org/a/qCvFfEYYDbv89FiF2E6GcpHBi)
