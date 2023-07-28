@@ -11,7 +11,11 @@
 > [Watch gameplay example](https://asciinema.org/a/bb1UTKTzWvLUyO32MTJdtk14o)
 
 ### 2. Calc
-> Calculate sum, difference or product of two numbers
+> Calculate sum, difference or product of two given numbers
 > 
 > [Watch gameplay example](https://asciinema.org/a/tuegI0gkdclpfLChjRy9M1XBg)
 
+### 3. GCD
+> Find the greatest common divisor of two given numbers
+> 
+> [Watch gameplay example](https://asciinema.org/a/28G9O8AH9KPGuF7BnPyzcrwTg)
