@@ -19,13 +19,18 @@ public class Calc {
             // Calculate correct answer
             String correctAnswer;
             switch (sign) {
-                case "+" -> correctAnswer = String.valueOf(firstNumber + secondNumber);
-                case "-" -> correctAnswer = String.valueOf(firstNumber - secondNumber);
-                case "*" -> correctAnswer = String.valueOf(firstNumber * secondNumber);
-                default -> {
+                case "+":
+                    correctAnswer = String.valueOf(firstNumber + secondNumber);
+                    break;
+                case "-":
+                    correctAnswer = String.valueOf(firstNumber - secondNumber);
+                    break;
+                case "*":
+                    correctAnswer = String.valueOf(firstNumber * secondNumber);
+                    break;
+                default:
                     System.out.println("Error: Sign is not implemented");
                     return;
-                }
             }
 
             System.out.println("Question: " + firstNumber + " " + sign + " " + secondNumber);
