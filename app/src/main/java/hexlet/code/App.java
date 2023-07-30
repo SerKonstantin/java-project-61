@@ -32,37 +32,17 @@ public class App {
 
         // For appending new game mode one needs to append this switch and HashMap "gameModes" above
         switch (gameModes.get(gameModeChoice)) {
-            case "Exit":
-                System.out.println("Exiting game now. Hope you had fun)");
-                break;
+            case "Exit" -> System.out.println("Exiting game now. Hope you had fun)");
+            case "Greet" -> Engine.getName();
+            case "Even" -> hexlet.code.games.Even.startGame();
+            case "Calc" -> hexlet.code.games.Calc.startGame();
+            case "GCD" -> hexlet.code.games.GCD.startGame();
+            case "Progression" -> hexlet.code.games.Progression.startGame();
+            case "Prime" -> hexlet.code.games.Prime.startGame();
 
-            case "Greet":
-                String userName = Engine.getName();
-                break;
-
-            case "Even":
-                hexlet.code.games.Even.startGame();
-                break;
-
-            case "Calc":
-                hexlet.code.games.Calc.startGame();
-                break;
-
-            case "GCD":
-                hexlet.code.games.GCD.startGame();
-                break;
-
-            case "Progression":
-                hexlet.code.games.Progression.startGame();
-                break;
-
-            case "Prime":
-                hexlet.code.games.Prime.startGame();
-                break;
 
             // Default case only needed if somebody add new game mode to the HashMap and doesn't add it to the switch
-            default:
-                System.out.println("Error: Sorry, game isn't implemented yet");
+            default -> System.out.println("Error: Sorry, game isn't implemented yet");
         }
     }
 }

@@ -16,23 +16,16 @@ public class Calc {
             int secondNumber = Engine.getRandom(1, maxRandomNumber);
             String sign = signs[Engine.getRandom(0, signs.length)];
 
+            // Calculate correct answer
             String correctAnswer;
             switch (sign) {
-                case "+":
-                    correctAnswer = String.valueOf(firstNumber + secondNumber);
-                    break;
-
-                case "-":
-                    correctAnswer = String.valueOf(firstNumber - secondNumber);
-                    break;
-
-                case "*":
-                    correctAnswer = String.valueOf(firstNumber * secondNumber);
-                    break;
-
-                default:
+                case "+" -> correctAnswer = String.valueOf(firstNumber + secondNumber);
+                case "-" -> correctAnswer = String.valueOf(firstNumber - secondNumber);
+                case "*" -> correctAnswer = String.valueOf(firstNumber * secondNumber);
+                default -> {
                     System.out.println("Error: Sign is not implemented");
                     return;
+                }
             }
 
             System.out.println("Question: " + firstNumber + " " + sign + " " + secondNumber);
@@ -44,5 +37,7 @@ public class Calc {
                 return;
             }
         }
+
+        Engine.congrats(userName);
     }
 }

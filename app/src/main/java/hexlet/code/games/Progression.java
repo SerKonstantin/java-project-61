@@ -41,5 +41,7 @@ public class Progression {
                 return;
             }
         }
+
+        Engine.congrats(userName);
     }
 }

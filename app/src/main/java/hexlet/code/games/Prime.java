@@ -16,15 +16,14 @@ public class Prime {
         final int maxRandomNumber = 100;
 
         for (int i = 0; i < Engine.ROUNDS_COUNT; i++) {
-            int number = 0;
-            String correctAnswer = "";
+            int number;
+            String correctAnswer;
 
             // Generate number with chance for prime and not prime 50/50
             if (Math.random() < 0.5) {
                 number = primeNumbers[Engine.getRandom(0, primeNumbers.length)];
                 correctAnswer = "yes";
             } else {
-                number = Engine.getRandom(1, maxRandomNumber);
                 List<int[]> primeNumbersAsList = Arrays.asList(primeNumbers);
                 do {
                     number = Engine.getRandom(1, maxRandomNumber);
@@ -34,19 +33,15 @@ public class Prime {
 
             System.out.println("Question: " + number);
 
-            String answer = Engine.getAnswer();
-
-            // Normalising answer
-            if (answer.matches("^(?i)(y|yes|yeah|yea|yep)$")) {
-                answer = "yes";
-            } else if (answer.matches("^(?i)(n|no|nope)$")) {
-                answer = "no";
-            }
+            // Get answer from user
+            String answer = Engine.normalizeAnswer(Engine.getAnswer());
 
             var isCorrect = Engine.checkAnswer(answer, correctAnswer, userName);
             if (!isCorrect) {
                 return;
             }
         }
+
+        Engine.congrats(userName);
     }
 }

@@ -31,5 +31,7 @@ public class GCD {
                 return;
             }
         }
+
+        Engine.congrats(userName);
     }
 }

@@ -3,7 +3,6 @@ package hexlet.code;
 import java.util.Scanner;
 
 public class Engine {
-
     public static final int ROUNDS_COUNT = 3;
 
     public static String getName() {
@@ -42,6 +41,17 @@ public class Engine {
 
     public static void congrats(String userName) {
         System.out.println("Congratulations, " + userName + "!");
+    }
+
+
+    public static String normalizeAnswer(String answer) {
+        if (answer.matches("^(?i)(y|yes|yeah|yea|yep)$")) {
+            return "yes";
+        } else if (answer.matches("^(?i)(n|no|nope)$")) {
+            return "no";
+        } else {
+            return answer;
+        }
     }
 
 }
