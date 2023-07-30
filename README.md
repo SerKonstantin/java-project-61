@@ -6,7 +6,7 @@
 
 ## Games list:
 ### 1. Even
-> Guess if number is even or odd
+> Guess if given number is even or odd
 > 
 > [Watch gameplay example](https://asciinema.org/a/bb1UTKTzWvLUyO32MTJdtk14o)
 
@@ -24,3 +24,8 @@
 > Find out what number is missing in a row
 > 
 > [Watch gameplay example](https://asciinema.org/a/qCvFfEYYDbv89FiF2E6GcpHBi)
+
+### 5. Prime
+> Guess if given number is prime or not
+> 
+> [Watch gameplay example](https://asciinema.org/a/veciXB28CNafkSluRgSYmmGR9)
