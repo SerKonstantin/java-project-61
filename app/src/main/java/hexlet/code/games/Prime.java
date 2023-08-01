@@ -1,6 +1,7 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+import hexlet.code.Util;
 
 public class Prime {
     public static void startGame() {
@@ -37,11 +38,11 @@ public class Prime {
 
         if (Math.random() < probability) {
             do {
-                number = Engine.getRandom(1, maxRandomNumber);
+                number = Util.getRandom(1, maxRandomNumber);
             } while (!isPrime(number));
         } else {
             do {
-                number = Engine.getRandom(1, maxRandomNumber);
+                number = Util.getRandom(1, maxRandomNumber);
             } while (isPrime(number));
         }
 

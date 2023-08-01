@@ -1,6 +1,7 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+import hexlet.code.Util;
 
 public class GCD {
     public static void startGame() {
@@ -12,12 +13,12 @@ public class GCD {
         final int[] primeNumbers = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29};
 
         for (int i = 0; i < Engine.ROUNDS_COUNT; i++) {
-            int originGCD = Engine.getRandom(1, maxRandomGCD);
-            int firstNumber = originGCD * primeNumbers[Engine.getRandom(0, primeNumbers.length)];
-            int secondNumber = originGCD * primeNumbers[Engine.getRandom(0, primeNumbers.length)];
+            int originGCD = Util.getRandom(1, maxRandomGCD);
+            int firstNumber = originGCD * primeNumbers[Util.getRandom(0, primeNumbers.length)];
+            int secondNumber = originGCD * primeNumbers[Util.getRandom(0, primeNumbers.length)];
 
             while (firstNumber == secondNumber) {
-                secondNumber = originGCD * primeNumbers[Engine.getRandom(0, primeNumbers.length)];
+                secondNumber = originGCD * primeNumbers[Util.getRandom(0, primeNumbers.length)];
             }
 
             String correctAnswer = String.valueOf(originGCD);

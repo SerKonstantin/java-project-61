@@ -15,11 +15,6 @@ public class Engine {
     }
 
 
-    public static int getRandom(int min, int max) {
-        return (int) ((Math.random() * (max - min)) + min);
-    }
-
-
     public static String getAnswer() {
         System.out.print("Your answer: ");
         Scanner scanner = new Scanner(System.in);

@@ -1,6 +1,7 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+import hexlet.code.Util;
 
 public class Progression {
     public static void startGame() {
@@ -14,11 +15,11 @@ public class Progression {
         final int maxStep = 10;
 
         for (int i = 0; i < Engine.ROUNDS_COUNT; i++) {
-            var currentNumber = Engine.getRandom(1, maxStartNumber);
-            var rowLength = Engine.getRandom(minRowLength, maxRowLength);
-            var step = Engine.getRandom(2, maxStep);
+            var currentNumber = Util.getRandom(1, maxStartNumber);
+            var rowLength = Util.getRandom(minRowLength, maxRowLength);
+            var step = Util.getRandom(2, maxStep);
 
-            int indexToHide = Engine.getRandom(2, rowLength - 1);
+            int indexToHide = Util.getRandom(2, rowLength - 1);
 
             String correctAnswer = "";
             System.out.print("Question: ");

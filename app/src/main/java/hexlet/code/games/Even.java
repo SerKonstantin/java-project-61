@@ -1,6 +1,7 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+import hexlet.code.Util;
 
 public class Even {
     public static void startGame() {
@@ -11,7 +12,7 @@ public class Even {
         final int maxRandomNumber = 50;
 
         for (int i = 0; i < Engine.ROUNDS_COUNT; i++) {
-            int number = Engine.getRandom(1, maxRandomNumber);
+            int number = Util.getRandom(1, maxRandomNumber);
             String correctAnswer = number % 2 == 0 ? "yes" : "no";
 
             System.out.println("Question: " + number);

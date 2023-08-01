@@ -1,6 +1,7 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+import hexlet.code.Util;
 
 public class Calc {
     public static void startGame() {
@@ -12,9 +13,9 @@ public class Calc {
         final String[] signs = {"+", "-", "*"};
 
         for (int i = 0; i < Engine.ROUNDS_COUNT; i++) {
-            int firstNumber = Engine.getRandom(1, maxRandomNumber);
-            int secondNumber = Engine.getRandom(1, maxRandomNumber);
-            String sign = signs[Engine.getRandom(0, signs.length)];
+            int firstNumber = Util.getRandom(1, maxRandomNumber);
+            int secondNumber = Util.getRandom(1, maxRandomNumber);
+            String sign = signs[Util.getRandom(0, signs.length)];
 
             // Calculate correct answer
             String correctAnswer;
