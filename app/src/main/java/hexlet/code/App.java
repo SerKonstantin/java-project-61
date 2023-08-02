@@ -21,7 +21,7 @@ public class App {
 
         switch (gameModeChoice) {
             case "0" -> System.out.println("Exiting game now. Hope you had fun)");
-            case "1" -> Engine.getName();
+            case "1" -> Cli.getName();
             case "2" -> hexlet.code.games.Even.startGame();
             case "3" -> hexlet.code.games.Calc.startGame();
             case "4" -> hexlet.code.games.GCD.startGame();
