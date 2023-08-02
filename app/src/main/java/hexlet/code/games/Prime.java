@@ -5,27 +5,17 @@ import hexlet.code.Util;
 
 public class Prime {
     public static void startGame() {
-        String userName = Engine.getName();
+        String gameMode = "Prime";
+        String question = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
 
-        System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
+        Engine.startGame(gameMode, question);
+    }
 
-        for (int i = 0; i < Engine.ROUNDS_COUNT; i++) {
 
-            int number = generatePrimeWithChance();
-            String correctAnswer = isPrime(number) ? "yes" : "no";
-
-            System.out.println("Question: " + number);
-
-            // Get answer from user
-            String answer = Engine.normalizeAnswer(Engine.getAnswer());
-
-            var isCorrect = Engine.checkAnswer(answer, correctAnswer, userName);
-            if (!isCorrect) {
-                return;
-            }
-        }
-
-        Engine.congrats(userName);
+    public static String getRound() {
+        int number = generatePrimeWithChance();
+        System.out.println("Question: " + number);
+        return isPrime(number) ? "yes" : "no";
     }
 
 
