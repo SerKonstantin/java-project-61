@@ -3,22 +3,35 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 import hexlet.code.Util;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Even {
     public static void startGame() {
-        String gameMode = "Even";
-        String question = "Answer 'yes' if the number is even, otherwise answer 'no'.";
+        var questionsCount = Engine.ROUNDS_COUNT;
+        String rule = "Answer 'yes' if the number is even, otherwise answer 'no'.";
+        String[] questions = new String[questionsCount];
+        String[] answers = new String[questionsCount];
 
-        Engine.startGame(gameMode, question);
+        for (int i = 0; i < questionsCount; i++) {
+            var questionAndAnswer = getRound();
+            questions[i] = questionAndAnswer.get("question");
+            answers[i] = questionAndAnswer.get("answer");
+        }
+
+        Engine.startGame(rule, questions, answers);
     }
 
 
-    public static String getRound() {
+    public static Map<String, String> getRound() {
         final int maxRandomNumber = 50;
         int number = Util.getRandom(1, maxRandomNumber);
-        String correctAnswer = number % 2 == 0 ? "yes" : "no";
+        String answer = number % 2 == 0 ? "yes" : "no";
 
-        System.out.println("Question: " + number);
+        Map<String, String> questionAndAnswer = new HashMap<>();
+        questionAndAnswer.put("question", "Question: " + number);
+        questionAndAnswer.put("answer", answer);
 
-        return correctAnswer;
+        return questionAndAnswer;
     }
 }

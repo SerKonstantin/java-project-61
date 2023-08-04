@@ -3,19 +3,35 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 import hexlet.code.Util;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Prime {
     public static void startGame() {
-        String gameMode = "Prime";
-        String question = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
+        var questionsCount = Engine.ROUNDS_COUNT;
+        String rule = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
+        String[] questions = new String[questionsCount];
+        String[] answers = new String[questionsCount];
 
-        Engine.startGame(gameMode, question);
+        for (int i = 0; i < questionsCount; i++) {
+            var questionAndAnswer = getRound();
+            questions[i] = questionAndAnswer.get("question");
+            answers[i] = questionAndAnswer.get("answer");
+        }
+
+        Engine.startGame(rule, questions, answers);
     }
 
 
-    public static String getRound() {
+    public static Map<String, String> getRound() {
         int number = generatePrimeWithChance();
-        System.out.println("Question: " + number);
-        return isPrime(number) ? "yes" : "no";
+        var answer = isPrime(number) ? "yes" : "no";
+
+        Map<String, String> questionAndAnswer = new HashMap<>();
+        questionAndAnswer.put("question", "Question: " + number);
+        questionAndAnswer.put("answer", answer);
+
+        return questionAndAnswer;
     }
 
 
