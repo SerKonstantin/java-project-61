@@ -3,35 +3,28 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 import hexlet.code.Util;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Even {
+    public static final String EVEN_RULE = "Answer 'yes' if the number is even, otherwise answer 'no'.";
+    public static final int MAX_RANDOM_NUMBER = 50;
+
     public static void startGame() {
         var questionsCount = Engine.ROUNDS_COUNT;
-        String rule = "Answer 'yes' if the number is even, otherwise answer 'no'.";
-        String[] questions = new String[questionsCount];
-        String[] answers = new String[questionsCount];
+        String[][] data = new String[questionsCount][2];
 
         for (int i = 0; i < questionsCount; i++) {
-            var questionAndAnswer = getRound();
-            questions[i] = questionAndAnswer.get("question");
-            answers[i] = questionAndAnswer.get("answer");
+            data[i] = getRound();
         }
 
-        Engine.startGame(rule, questions, answers);
+        Engine.startGame(EVEN_RULE, data);
     }
 
 
-    public static Map<String, String> getRound() {
-        final int maxRandomNumber = 50;
-        int number = Util.getRandom(1, maxRandomNumber);
-        String answer = number % 2 == 0 ? "yes" : "no";
+    public static String[] getRound() {
+        String[] questionAnswerPair = new String[2];
+        int number = Util.getRandom(1, MAX_RANDOM_NUMBER);
+        questionAnswerPair[0] = "Question: " + number;
+        questionAnswerPair[1] = number % 2 == 0 ? "yes" : "no";
 
-        Map<String, String> questionAndAnswer = new HashMap<>();
-        questionAndAnswer.put("question", "Question: " + number);
-        questionAndAnswer.put("answer", answer);
-
-        return questionAndAnswer;
+        return questionAnswerPair;
     }
 }

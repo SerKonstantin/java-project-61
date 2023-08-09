@@ -3,45 +3,39 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 import hexlet.code.Util;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Calc {
+    public static final String CALC_RULE = "What is the result of the expression?";
+    public static final int MAX_RANDOM_NUMBER = 20;
+    public static final String[] SIGNS = {"+", "-", "*"};
+
     public static void startGame() {
         var questionsCount = Engine.ROUNDS_COUNT;
-        String rule = "What is the result of the expression?";
-        String[] questions = new String[questionsCount];
-        String[] answers = new String[questionsCount];
+        String[][] data = new String[questionsCount][2];
 
         for (int i = 0; i < questionsCount; i++) {
-            var questionAndAnswer = getRound();
-            questions[i] = questionAndAnswer.get("question");
-            answers[i] = questionAndAnswer.get("answer");
+            data[i] = getRound();
         }
 
-        Engine.startGame(rule, questions, answers);
+        Engine.startGame(CALC_RULE, data);
     }
 
 
-    public static Map<String, String> getRound() {
-        final int maxRandomNumber = 20;
-        final String[] signs = {"+", "-", "*"};
+    public static String[] getRound() {
+        String[] questionAnswerPair = new String[2];
 
-        int firstNumber = Util.getRandom(1, maxRandomNumber);
-        int secondNumber = Util.getRandom(1, maxRandomNumber);
-        String sign = signs[Util.getRandom(0, signs.length)];
+        int firstNumber = Util.getRandom(1, MAX_RANDOM_NUMBER);
+        int secondNumber = Util.getRandom(1, MAX_RANDOM_NUMBER);
+        String sign = SIGNS[Util.getRandom(0, SIGNS.length)];
 
-        var answer = switch (sign) {
+        questionAnswerPair[0] = "Question: " + firstNumber + " " + sign + " " + secondNumber;
+
+        questionAnswerPair[1] = switch (sign) {
             case "+" -> String.valueOf(firstNumber + secondNumber);
             case "-" -> String.valueOf(firstNumber - secondNumber);
             case "*" -> String.valueOf(firstNumber * secondNumber);
             default -> "Error";
         };
 
-        Map<String, String> questionAndAnswer = new HashMap<>();
-        questionAndAnswer.put("question", "Question: " + firstNumber + " " + sign + " " + secondNumber);
-        questionAndAnswer.put("answer", answer);
-
-        return questionAndAnswer;
+        return questionAnswerPair;
     }
 }

@@ -3,52 +3,45 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 import hexlet.code.Util;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Prime {
+    public static final String PRIME_RULE = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
+    public static final int MAX_RANDOM_NUMBER = 100;
+    public static final float PROBABILITY = 0.5F;
+
     public static void startGame() {
         var questionsCount = Engine.ROUNDS_COUNT;
-        String rule = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
-        String[] questions = new String[questionsCount];
-        String[] answers = new String[questionsCount];
+        String[][] data = new String[questionsCount][2];
 
         for (int i = 0; i < questionsCount; i++) {
-            var questionAndAnswer = getRound();
-            questions[i] = questionAndAnswer.get("question");
-            answers[i] = questionAndAnswer.get("answer");
+            data[i] = getRound();
         }
 
-        Engine.startGame(rule, questions, answers);
+        Engine.startGame(PRIME_RULE, data);
     }
 
 
-    public static Map<String, String> getRound() {
+    public static String[] getRound() {
         int number = generatePrimeWithChance();
-        var answer = isPrime(number) ? "yes" : "no";
 
-        Map<String, String> questionAndAnswer = new HashMap<>();
-        questionAndAnswer.put("question", "Question: " + number);
-        questionAndAnswer.put("answer", answer);
+        String[] questionAnswerPair = new String[2];
+        questionAnswerPair[0] = "Question: " + number;
+        questionAnswerPair[1] = isPrime(number) ? "yes" : "no";
 
-        return questionAndAnswer;
+        return questionAnswerPair;
     }
 
 
-    // Generate number with chance for prime and not prime 50/50
+    // Generate number with a "probability" chance to be a prime number
     public static int generatePrimeWithChance() {
-        final int maxRandomNumber = 100;
-        final float probability = 0.5F;
-
         int number;
 
-        if (Math.random() < probability) {
+        if (Math.random() < PROBABILITY) {
             do {
-                number = Util.getRandom(1, maxRandomNumber);
+                number = Util.getRandom(1, MAX_RANDOM_NUMBER);
             } while (!isPrime(number));
         } else {
             do {
-                number = Util.getRandom(1, maxRandomNumber);
+                number = Util.getRandom(1, MAX_RANDOM_NUMBER);
             } while (isPrime(number));
         }
 
@@ -57,8 +50,7 @@ public class Prime {
 
 
     public static boolean isPrime(int n) {
-        // Wikipedia says '1' isn't a prime number, because it has only one divisor == 1
-        if (n == 1) {
+        if (n < 2) {
             return false;
         }
 

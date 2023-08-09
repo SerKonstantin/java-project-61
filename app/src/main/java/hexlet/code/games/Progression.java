@@ -3,53 +3,48 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 import hexlet.code.Util;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Progression {
+    public static final String PROGRESSION_RULE = "What number is missing in the progression?";
+    public static final int MIN_ROW_LENGTH = 5;
+    public static final int MAX_ROW_LENGTH = 12;
+    public static final int MAX_START_NUMBER = 25;
+    public static final int MAX_STEP = 10;
+
     public static void startGame() {
         var questionsCount = Engine.ROUNDS_COUNT;
-        String rule = "What number is missing in the progression?";
-        String[] questions = new String[questionsCount];
-        String[] answers = new String[questionsCount];
+        String[][] data = new String[questionsCount][2];
 
         for (int i = 0; i < questionsCount; i++) {
-            var questionAndAnswer = getRound();
-            questions[i] = questionAndAnswer.get("question");
-            answers[i] = questionAndAnswer.get("answer");
+            data[i] = getRound();
         }
 
-        Engine.startGame(rule, questions, answers);
+        Engine.startGame(PROGRESSION_RULE, data);
     }
 
 
-    public static Map<String, String> getRound() {
-        final int minRowLength = 5;
-        final int maxRowLength = 12;
-        final int maxStartNumber = 25;
-        final int maxStep = 10;
+    public static String[] getRound() {
+        String[] questionAnswerPair = new String[2];
 
-        var currentNumber = Util.getRandom(1, maxStartNumber);
-        var rowLength = Util.getRandom(minRowLength, maxRowLength);
-        var step = Util.getRandom(2, maxStep);
+        var currentNumber = Util.getRandom(1, MAX_START_NUMBER);
+        var rowLength = Util.getRandom(MIN_ROW_LENGTH, MAX_ROW_LENGTH);
+        var step = Util.getRandom(2, MAX_STEP);
         int indexToHide = Util.getRandom(2, rowLength - 1);
 
         String answer = "";
-        String question = "Question: ";
+        StringBuilder question = new StringBuilder("Question: ");
         for (int i = 0; i < rowLength; i++) {
             if (i == indexToHide) {
-                question = question.concat(".. ");
+                question.append(".. ");
                 answer = String.valueOf(currentNumber);
             } else {
-                question = question.concat(currentNumber + " ");
+                question.append(currentNumber).append(" ");
             }
             currentNumber += step;
         }
 
-        Map<String, String> questionAndAnswer = new HashMap<>();
-        questionAndAnswer.put("question", question);
-        questionAndAnswer.put("answer", answer);
+        questionAnswerPair[0] = question.toString();
+        questionAnswerPair[1] = answer;
 
-        return questionAndAnswer;
+        return questionAnswerPair;
     }
 }
