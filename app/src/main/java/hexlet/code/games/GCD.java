@@ -4,9 +4,9 @@ import hexlet.code.Engine;
 import hexlet.code.Util;
 
 public class GCD {
-    public static final String GCD_RULE = "Find the greatest common divisor of given numbers.";
-    public static final int MAX_RANDOM_GCD = 10;
-    public static final int[] PRIME_NUMBERS = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29};
+    public static final String RULE = "Find the greatest common divisor of given numbers.";
+    public static final int MAX_RANDOM_NUMBER = 100;
+
 
     public static void startGame() {
         var questionsCount = Engine.ROUNDS_COUNT;
@@ -16,24 +16,39 @@ public class GCD {
             data[i] = getRound();
         }
 
-        Engine.startGame(GCD_RULE, data);
+        Engine.startGame(RULE, data);
     }
 
 
     public static String[] getRound() {
-        String[] questionAnswerPair = new String[2];
-
-        int originGCD = Util.getRandom(1, MAX_RANDOM_GCD);
-        int firstNumber = originGCD * PRIME_NUMBERS[Util.getRandom(0, PRIME_NUMBERS.length)];
-        int secondNumber = originGCD * PRIME_NUMBERS[Util.getRandom(0, PRIME_NUMBERS.length)];
+        int firstNumber = Util.getRandom(1, MAX_RANDOM_NUMBER);
+        int secondNumber = Util.getRandom(1, MAX_RANDOM_NUMBER);
 
         while (firstNumber == secondNumber) {
-            secondNumber = originGCD * PRIME_NUMBERS[Util.getRandom(0, PRIME_NUMBERS.length)];
+            secondNumber = Util.getRandom(1, MAX_RANDOM_NUMBER);
         }
 
+        String[] questionAnswerPair = new String[2];
         questionAnswerPair[0] = "Question: " + firstNumber + " " + secondNumber;
-        questionAnswerPair[1] = String.valueOf(originGCD);
+        questionAnswerPair[1] = getAnswer(firstNumber, secondNumber);
 
         return questionAnswerPair;
+    }
+
+
+    public static String getAnswer(int firstNumber, int secondNumber) {
+        if (firstNumber < secondNumber) {
+            var temp = firstNumber;
+            firstNumber = secondNumber;
+            secondNumber = temp;
+        }
+
+        while (secondNumber != 0) {
+            int remainder = firstNumber % secondNumber;
+            firstNumber = secondNumber;
+            secondNumber = remainder;
+        }
+
+        return String.valueOf(firstNumber);
     }
 }

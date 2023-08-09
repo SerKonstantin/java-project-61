@@ -26,14 +26,30 @@ public class App {
         System.out.println("Your choice: " + gameModeChoice);
 
         switch (gameModeChoice) {
-            case "0" -> System.out.println("Exiting game now. Hope you had fun)");
-            case "1" -> Cli.getName();
-            case "2" -> Even.startGame();
-            case "3" -> Calc.startGame();
-            case "4" -> GCD.startGame();
-            case "5" -> Progression.startGame();
-            case "6" -> Prime.startGame();
-            default -> System.out.println("Error: Not a valid game number");
+            case "0":
+                System.out.println("Exiting game now. Hope you had fun)");
+                break;
+            case "1":
+                Cli.getName();
+                break;
+            case "2":
+                Even.startGame();
+                break;
+            case "3":
+                Calc.startGame();
+                break;
+            case "4":
+                GCD.startGame();
+                break;
+            case "5":
+                Progression.startGame();
+                break;
+            case "6":
+                Prime.startGame();
+                break;
+            default:
+                System.out.println("Error: Not a valid game number");
+                break;
         }
     }
 }
