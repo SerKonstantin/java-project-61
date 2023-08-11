@@ -4,28 +4,50 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/SerKonstantin/java-project-61/workflows/hexlet-check/badge.svg)](https://github.com/SerKonstantin/java-project-61/actions)
 
-## Games list:
+Description: set of simple mathematical games for educational purposes
+
+## Start
+```shell
+make
+```
+
+## Setup
+```shell
+make build
+```
+
+## Run
+```shell
+make run
+```
+
+## Run checkstyle
+```shell
+make lint
+```
+
+# Games list:
 ### 1. Even
 > Guess if given number is even or odd
 > 
-> [Watch gameplay example](https://asciinema.org/a/bb1UTKTzWvLUyO32MTJdtk14o)
+> [Watch gameplay example](https://asciinema.org/a/602023)
 
 ### 2. Calc
 > Calculate sum, difference or product of two given numbers
 > 
-> [Watch gameplay example](https://asciinema.org/a/tuegI0gkdclpfLChjRy9M1XBg)
+> [Watch gameplay example](https://asciinema.org/a/602030)
 
 ### 3. GCD
 > Find the greatest common divisor of two given numbers
 > 
-> [Watch gameplay example](https://asciinema.org/a/28G9O8AH9KPGuF7BnPyzcrwTg)
+> [Watch gameplay example](https://asciinema.org/a/602032)
 
 ### 4. Progression
 > Find out what number is missing in a row
 > 
-> [Watch gameplay example](https://asciinema.org/a/qCvFfEYYDbv89FiF2E6GcpHBi)
+> [Watch gameplay example](https://asciinema.org/a/602033)
 
 ### 5. Prime
 > Guess if given number is prime or not
 > 
-> [Watch gameplay example](https://asciinema.org/a/veciXB28CNafkSluRgSYmmGR9)
+> [Watch gameplay example](https://asciinema.org/a/602036)
