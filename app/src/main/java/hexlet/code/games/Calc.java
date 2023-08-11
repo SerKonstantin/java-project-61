@@ -8,42 +8,45 @@ public class Calc {
     public static final int MAX_RANDOM_NUMBER = 20;
     public static final String[] SIGNS = {"+", "-", "*"};
 
-
-    public static void startGame() {
+    public static void startGame() throws Exception {
         var questionsCount = Engine.ROUNDS_COUNT;
         String[][] data = new String[questionsCount][2];
 
         for (int i = 0; i < questionsCount; i++) {
-            data[i] = getRound();
+            try {
+                data[i] = getRound();
+            } catch (Exception error) {
+                System.out.println("Error: " + error.getMessage());
+                return;
+            }
         }
 
         Engine.startGame(RULE, data);
     }
 
-
-    public static String[] getRound() {
+    public static String[] getRound() throws Exception {
         int firstNumber = Util.getRandom(1, MAX_RANDOM_NUMBER);
         int secondNumber = Util.getRandom(1, MAX_RANDOM_NUMBER);
         String sign = SIGNS[Util.getRandom(0, SIGNS.length)];
 
         String[] questionAnswerPair = new String[2];
         questionAnswerPair[0] = "Question: " + firstNumber + " " + sign + " " + secondNumber;
-        questionAnswerPair[1] = getAnswer(firstNumber, secondNumber, sign);
+        int result = calculate(firstNumber, secondNumber, sign);
+        questionAnswerPair[1] = String.valueOf(result);
 
         return questionAnswerPair;
     }
 
-
-    public static String getAnswer(int firstNumber, int secondNumber, String sign) {
+    public static int calculate(int a, int b, String sign) throws Exception {
         switch (sign) {
             case "+":
-                return String.valueOf(firstNumber + secondNumber);
+                return a + b;
             case "-":
-                return String.valueOf(firstNumber - secondNumber);
+                return a - b;
             case "*":
-                return String.valueOf(firstNumber * secondNumber);
+                return a * b;
             default:
-                return "Error";
+                throw new Exception("Unknown symbol");
         }
     }
 }

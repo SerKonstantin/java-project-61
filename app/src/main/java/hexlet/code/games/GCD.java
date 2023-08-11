@@ -7,7 +7,6 @@ public class GCD {
     public static final String RULE = "Find the greatest common divisor of given numbers.";
     public static final int MAX_RANDOM_NUMBER = 100;
 
-
     public static void startGame() {
         var questionsCount = Engine.ROUNDS_COUNT;
         String[][] data = new String[questionsCount][2];
@@ -19,7 +18,6 @@ public class GCD {
         Engine.startGame(RULE, data);
     }
 
-
     public static String[] getRound() {
         int firstNumber = Util.getRandom(1, MAX_RANDOM_NUMBER);
         int secondNumber = Util.getRandom(1, MAX_RANDOM_NUMBER);
@@ -30,25 +28,18 @@ public class GCD {
 
         String[] questionAnswerPair = new String[2];
         questionAnswerPair[0] = "Question: " + firstNumber + " " + secondNumber;
-        questionAnswerPair[1] = getAnswer(firstNumber, secondNumber);
+        int result = findGCD(firstNumber, secondNumber);
+        questionAnswerPair[1] = String.valueOf(result);
 
         return questionAnswerPair;
     }
 
-
-    public static String getAnswer(int firstNumber, int secondNumber) {
-        if (firstNumber < secondNumber) {
-            var temp = firstNumber;
-            firstNumber = secondNumber;
-            secondNumber = temp;
+    public static int findGCD(int a, int b) {
+        while (b != 0) {
+            int remainder = a % b;
+            a = b;
+            b = remainder;
         }
-
-        while (secondNumber != 0) {
-            int remainder = firstNumber % secondNumber;
-            firstNumber = secondNumber;
-            secondNumber = remainder;
-        }
-
-        return String.valueOf(firstNumber);
+        return a;
     }
 }

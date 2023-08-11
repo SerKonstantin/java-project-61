@@ -21,31 +21,36 @@ public class Progression {
         Engine.startGame(RULE, data);
     }
 
-
     public static String[] getRound() {
         var startNumber = Util.getRandom(1, MAX_START_NUMBER);
-        var rowLength = Util.getRandom(MIN_ROW_LENGTH, MAX_ROW_LENGTH);
+        var progressionLength = Util.getRandom(MIN_ROW_LENGTH, MAX_ROW_LENGTH);
         var step = Util.getRandom(2, MAX_STEP);
-        int indexToHide = Util.getRandom(2, rowLength - 1);
+        int indexToHide = Util.getRandom(2, progressionLength - 1);
+
+        int[] progression = getProgression(startNumber, progressionLength, step);
+
+        StringBuilder sb = new StringBuilder("Question: ");
+        for (int i = 0; i < progressionLength; i++) {
+            if (i == indexToHide) {
+                sb.append(".. ");
+            } else {
+                sb.append(progression[i]).append(" ");
+            }
+        }
 
         String[] questionAnswerPair = new String[2];
-        questionAnswerPair[0] = getQuestion(startNumber, rowLength, step, indexToHide);
-        questionAnswerPair[1] = String.valueOf(startNumber + step * indexToHide);
+        questionAnswerPair[0] = sb.toString();
+        questionAnswerPair[1] = String.valueOf(progression[indexToHide]);
 
         return questionAnswerPair;
     }
 
-
-    public static String getQuestion(int currentNumber, int rowLength, int step, int indexToHide) {
-        StringBuilder question = new StringBuilder("Question: ");
-        for (int i = 0; i < rowLength; i++) {
-            if (i == indexToHide) {
-                question.append(".. ");
-            } else {
-                question.append(currentNumber).append(" ");
-            }
-            currentNumber += step;
+    public static int[] getProgression(int startNumber, int progressionLength, int step) {
+        int[] progression = new int[progressionLength];
+        for (int i = 0; i < progressionLength; i++) {
+            progression[i] = startNumber + (i * step);
         }
-        return question.toString();
+
+        return progression;
     }
 }
