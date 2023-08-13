@@ -8,10 +8,9 @@ public class Prime {
     public static final int MAX_RANDOM_NUMBER = 100;
 
     public static void startGame() {
-        var questionsCount = Engine.ROUNDS_COUNT;
-        String[][] data = new String[questionsCount][2];
+        String[][] data = new String[Engine.ROUNDS_COUNT][2];
 
-        for (int i = 0; i < questionsCount; i++) {
+        for (int i = 0; i < Engine.ROUNDS_COUNT; i++) {
             data[i] = getRound();
         }
 

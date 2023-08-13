@@ -8,23 +8,17 @@ public class Calc {
     public static final int MAX_RANDOM_NUMBER = 20;
     public static final String[] SIGNS = {"+", "-", "*"};
 
-    public static void startGame() throws Exception {
-        var questionsCount = Engine.ROUNDS_COUNT;
-        String[][] data = new String[questionsCount][2];
+    public static void startGame() {
+        String[][] data = new String[Engine.ROUNDS_COUNT][2];
 
-        for (int i = 0; i < questionsCount; i++) {
-            try {
-                data[i] = getRound();
-            } catch (Exception error) {
-                System.out.println("Error: " + error.getMessage());
-                return;
-            }
+        for (int i = 0; i < Engine.ROUNDS_COUNT; i++) {
+            data[i] = getRound();
         }
 
         Engine.startGame(RULE, data);
     }
 
-    public static String[] getRound() throws Exception {
+    public static String[] getRound() {
         int firstNumber = Util.getRandom(1, MAX_RANDOM_NUMBER);
         int secondNumber = Util.getRandom(1, MAX_RANDOM_NUMBER);
         String sign = SIGNS[Util.getRandom(0, SIGNS.length)];
@@ -37,7 +31,7 @@ public class Calc {
         return questionAnswerPair;
     }
 
-    public static int calculate(int a, int b, String sign) throws Exception {
+    public static int calculate(int a, int b, String sign) {
         switch (sign) {
             case "+":
                 return a + b;
@@ -46,7 +40,7 @@ public class Calc {
             case "*":
                 return a * b;
             default:
-                throw new Exception("Unknown symbol");
+                throw new RuntimeException("Unknown symbol");
         }
     }
 }
